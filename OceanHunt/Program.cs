@@ -10,6 +10,9 @@ namespace OceanHunt
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Updated");
+            Console.WriteLine("Updated 1");
+            Console.WriteLine("Updated 2");
             Console.WriteLine("Hello! 1 ");
         }
     }
