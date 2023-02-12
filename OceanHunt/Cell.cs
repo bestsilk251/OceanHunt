@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OceanHunt
 {
-    public abstract class Cell
+    public class Cell
     {
         public Coordinate OffSet { get; set; }
         public string Image { get; set; }
@@ -14,41 +14,42 @@ namespace OceanHunt
             OffSet = offSet;
             Image = image;
         }
-        public virtual void Process(){}
-        public void IsCellEmpty(Coordinate coordinate)
+        public virtual void Process() { }
+        public bool IsCellEmpty(Coordinate coordinate)
         {
-
+            return Ocean.Cells[coordinate.X, coordinate.Y].GetType() == typeof(Cell);
         }
-        public void IsCellPrey(Coordinate coordinate)
+        public bool IsCellPrey(Coordinate coordinate)
         {
-
+            return Ocean.Cells[coordinate.X, coordinate.Y].GetType() == typeof(Prey);
         }
-        public void IsCellObstacle(Coordinate coordinate)
+        public bool IsCellObstacle(Coordinate coordinate)
         {
-
+            return Ocean.Cells[coordinate.X, coordinate.Y].GetType() == typeof(Obstacle);
         }
         public Cell GetCellAt(Coordinate coordinate)
         {
-            throw new NotImplementedException();
+            return Ocean.Cells[coordinate.X, coordinate.Y];
         }
         public void AssignCellAt(Cell cell, Coordinate coordinate)
         {
+            Ocean.Cells[coordinate.X, coordinate.Y] = cell;
         }
         public Cell GetCellFromEast()
         {
-            throw new NotImplementedException();
+            return Ocean.Cells[this.OffSet.X, this.OffSet.Y + 1];
         }
         public Cell GetCellFromWest()
         {
-            throw new NotImplementedException();
+            return Ocean.Cells[this.OffSet.X, this.OffSet.Y - 1];
         }
         public Cell GetCellFromNorth()
         {
-            throw new NotImplementedException();
+            return Ocean.Cells[this.OffSet.X - 1, this.OffSet.Y];
         }
         public Cell GetCellFromSouth()
         {
-            throw new NotImplementedException();
+            return Ocean.Cells[this.OffSet.X + 1, this.OffSet.Y];
         }
     }
 }

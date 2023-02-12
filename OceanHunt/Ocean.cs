@@ -17,7 +17,7 @@ namespace OceanHunt
         static int numObstacles = 75;      // перешкоди
         static int interationCounter = 1000; // ітерації 
 
-        //static int[,] cells = new int[numrows, numcols];
+        public static Cell[,] Cells = new Cell[,] { };
         public static void GettingInfo()
         {
             Run(interationCounter);
@@ -41,12 +41,11 @@ namespace OceanHunt
             Console.WriteLine($"Number of predators: {numPredators}");
             Console.WriteLine($"Number of obstacles: {numObstacles}");
 
-            
-            int[,] cells = InitCells(numRows, numCols);
+            Cells = InitCells(numRows, numCols);
 
             //DisplayBorder(numRows);
             //DisplayBorder(cells);
-            DisplayCells(cells);
+            //DisplayCells(cells);
             //DisplayBorder(numRows);
         }
 
@@ -86,20 +85,20 @@ namespace OceanHunt
         //}
 
         //public static void InitCells()
-        public static int[,] InitCells(int numRows, int numCols)                // заповнення масиву
+        public static Cell[,] InitCells(int numRows, int numCols)                // заповнення масиву
         {
-            
-            int[,] cells = new int[numRows, numCols];
+            throw new NotImplementedException();
+            //int[,] cells = new int[numRows, numCols];
 
-            for (int i = 0; i < cells.GetLength(0); i++)
-            {
-                for (int j = 0; j < cells.GetLength(1); j++)
-                {
-                    cells[i, j] = random.Next(-100, 100);
+            //for (int i = 0; i < cells.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < cells.GetLength(1); j++)
+            //    {
+            //        cells[i, j] = random.Next(-100, 100);
                     
-                }
-            }
-            return cells;
+            //    }
+            //}
+            //return cells;
         }
 
         //Console.Write("{0, 5}", cells[i, j]);

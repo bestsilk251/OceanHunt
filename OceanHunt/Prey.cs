@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -14,18 +15,27 @@ namespace OceanHunt
             TimeToReproduce = 6;
         }
 
-        public void Die()
+        public void Die(Cell cell)
         {
-            // Create empty Cell in Ocean[this.offSet.X,this.offSet.Y]
+            Ocean.Cells[this.OffSet.X, this.OffSet.Y] = new Cell(OffSet, Emoji.ImageForCell);
+            Clear();
+        }
 
+        private void Clear()
+        {
+            this.OffSet = null;
+            this.Image = null;
+            this.TimeToReproduce = 0;
         }
 
         public override void Process()
         {
             base.Process();
+
             TimeToReproduce--;
+
         }
-        
+
         //public Cell GetEmptyNeighbor()
         //{
         //    throw new NotImplementedException();
@@ -37,11 +47,19 @@ namespace OceanHunt
 
         public void Reproduce(Coordinate coordinate)
         {
-            throw new NotImplementedException();
+            Ocean.Cells[coordinate.X, coordinate.Y] = new Prey(coordinate, this.Image);
         }
         public void MoveFrom(Coordinate from, Coordinate to)
         {
-            throw new NotImplementedException();
+            if (TimeToReproduce == 0)
+            {
+                Reproduce(from);
+            }
+            else
+            {
+                Ocean.Cells[from.X, from.Y] = new Cell(from, Emoji.ImageForCell);
+            }
+            Ocean.Cells[to.X, to.Y] = this;
         }
     }
 }
