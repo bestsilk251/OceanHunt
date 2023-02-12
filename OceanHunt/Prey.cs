@@ -7,6 +7,8 @@ namespace OceanHunt
 {
     public class Prey : Cell
     {
-
+        public Prey(Coordinate offSet) : base(offSet)
+        {
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OceanHunt
 {
-    internal class Coordinate
+    public class Coordinate
     {
     }
 }
