@@ -12,7 +12,6 @@ namespace OceanHunt
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-
         }
 
     }
