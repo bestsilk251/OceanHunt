@@ -10,7 +10,7 @@ namespace OceanHunt
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            Console.WriteLine("Hello world!");
         }
 
     }
