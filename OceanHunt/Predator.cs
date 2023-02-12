@@ -7,7 +7,7 @@ namespace OceanHunt
 {
     public class Predator : Prey
     {
-        public Predator(Coordinate offSet) : base(offSet)
+        public Predator(Coordinate offSet, string image) : base(offSet, image)
         {
         }
     }

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Cell.cs" />
     <Compile Include="Coordinate.cs" />
+    <Compile Include="Emoji.cs" />
     <Compile Include="Obstacle.cs" />
     <Compile Include="Ocean.cs" />
     <Compile Include="Predator.cs" />

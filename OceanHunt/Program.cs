@@ -8,6 +8,7 @@ namespace OceanHunt
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             Ocean.GettingInfo();

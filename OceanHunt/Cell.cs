@@ -8,9 +8,11 @@ namespace OceanHunt
     public abstract class Cell
     {
         public Coordinate OffSet { get; set; }
-        public Cell(Coordinate offSet)
+        public string Image { get; set; }
+        public Cell(Coordinate offSet, string image)
         {
             OffSet = offSet;
+            Image = image;
         }
 
     }
