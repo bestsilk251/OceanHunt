@@ -16,6 +16,7 @@ namespace OceanHunt
 
             Console.ReadKey();
 
+            Console.OutputEncoding = Encoding.UTF8;
         }
 
     }
