@@ -8,9 +8,11 @@ namespace OceanHunt
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
+            Console.OutputEncoding = Encoding.UTF8;
+
         }
 
     }

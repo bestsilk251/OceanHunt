@@ -7,7 +7,7 @@ namespace OceanHunt
 {
     public class Obstacle : Cell
     {
-        public Obstacle(Coordinate offSet) : base(offSet)
+        public Obstacle(Coordinate offSet, string image) : base(offSet, image)
         {
         }
     }
