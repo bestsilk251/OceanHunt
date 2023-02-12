@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace OceanHunt
 {
-    internal class Program
+    internal class Coordinate
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("");
-        }
-
     }
 }
