@@ -14,6 +14,9 @@ namespace OceanHunt
         public const string ImageForPrey = "🐟";
         public const string ImageForPredator = "🦈";
         public const string ImageForObstacle = "🚩";
-  
+        public const string ImageForBorder = "♦";
+
+
+
     }
 }

@@ -7,12 +7,6 @@ namespace OceanHunt
 {
     public class Ocean
     {
-        static string Value { get; set; }
-
-        public  void Cell1(string value)
-        {
-            Value = value;
-        }
 
         static Random random = new Random();
 
@@ -25,7 +19,7 @@ namespace OceanHunt
         public static int interationCounter = 1000; // ітерації 
 
 
-        public static Cell[,] Cells = new Cell[,] { };
+        public static Cell[,] Cells = new Cell[numRows, numCols];
 
         #region fastback
         //static int numRows = 25;            // число рядків
@@ -108,20 +102,17 @@ namespace OceanHunt
         //}
 
         //public static void InitCells()
-        public static Cell[,] InitCells(int numRows, int numCols)                // заповнення масиву
+        public static void InitCells(int numRows, int numCols)                // заповнення масиву
         {
-            throw new NotImplementedException();
-            //int[,] cells = new int[numRows, numCols];
 
-            //for (int i = 0; i < cells.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < cells.GetLength(1); j++)
-            //    {
-            //        cells[i, j] = random.Next(-100, 100);
+            for (int i = 0; i < numRows - 1; i++)
+            {
+                for (int j = 0; j < numCols - 1; j++)
+                {
+                    Cells[i, j] = new Cell(new Coordinate {X = i, Y = j }, Emoji.ImageForCell) ;
 
-            //    }
-            //}
-            //return cells;
+                }
+            }
         }
 
         //Console.Write("{0, 5}", cells[i, j]);
@@ -141,16 +132,21 @@ namespace OceanHunt
 
         }
 
-        //public static void DisplayBorders(Cell[,] cells)
-        //{
-        //    for (int i = 0; i < cells.GetLength(0); i++)
-        //    {
-        //        for (int j = 0; j < cells.GetLength(1); j++)
-        //        {
-        //            cells[i, 0] = new Cell1("#");
-        //        }
-        //    }
-        //}
-       
+        public static void DisplayBorders()
+        {
+
+            for (int i = 0; i < Cells.GetLength(0); i++)
+            {
+                for (int j = 0; j < Cells.GetLength(1); j++)
+                {
+                    Cells[i, 0] = new Cell(new Coordinate {X = i, Y = 0 } ,Emoji.ImageForBorder);
+                    Cells[i, Cells.GetLength(0) -1] = new Cell(new Coordinate { X = i, Y = Cells.GetLength(0) - 1 }, Emoji.ImageForBorder);
+
+                    Cells[0, j] = new Cell(new Coordinate { X = 0, Y = j }, Emoji.ImageForBorder);
+                    Cells[Cells.GetLength(1) - 1, j] = new Cell(new Coordinate { X = Cells.GetLength(1) - 1, Y = j }, Emoji.ImageForBorder);
+                }
+            }
+        }
+
     }
 }
