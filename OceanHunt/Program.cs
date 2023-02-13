@@ -11,7 +11,7 @@ namespace OceanHunt
 
         static void Main(string[] args)
         {
-            Ocean.GettingInfo();
+            UserInterface.GettingValues();
 
 
             Console.ReadKey();

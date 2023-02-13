@@ -17,7 +17,7 @@ namespace OceanHunt
         {
             if (TimeToFeed==0)
             {
-                Die();
+                //Die();
                 return;
             }
             base.Process();
