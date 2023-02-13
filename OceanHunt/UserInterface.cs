@@ -35,8 +35,8 @@ namespace OceanHunt
 
             //DisplayBorder(numRows);
             //DisplayBorder(cells);
-            Ocean.DisplayCells(Ocean.Cells);
             Ocean.DisplayBorders();
+            Ocean.DisplayCells();
             //DisplayBorder(numRows);
         }
 

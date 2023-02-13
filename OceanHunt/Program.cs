@@ -11,12 +11,12 @@ namespace OceanHunt
 
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             UserInterface.GettingValues();
 
 
             Console.ReadKey();
 
-            Console.OutputEncoding = Encoding.UTF8;
         }
 
     }
