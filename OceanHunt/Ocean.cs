@@ -10,7 +10,17 @@ namespace OceanHunt
 
         static Random random = new Random();
 
-        public static int numRows = 25;            // число рядків
+        //private static int _numRows = 25;// число рядків
+        //public static int NumRows
+        //{ 
+        //    get { 
+        //        return _numRows; 
+        //    } 
+        //    set { 
+        //        _numRows = value;
+        //    }
+        //}
+        private static int numRows = 25;// число рядків
         public static int numCols = 70;            // число стовпців
         public static int size = numCols * numRows;
         public static int numPrey = 150;          // жертви
