@@ -15,9 +15,9 @@ namespace OceanHunt
             TimeToReproduce = 6;
         }
 
-        public void Die(Cell cell)
+        public void Die()
         {
-            Ocean.Cells[this.OffSet.X, this.OffSet.Y] = new Cell(OffSet, Emoji.ImageForCell);
+            Ocean._cells[this.OffSet.X, this.OffSet.Y] = new Cell(OffSet, Emoji.ImageForCell);
             Clear();
         }
 
@@ -47,7 +47,7 @@ namespace OceanHunt
 
         public void Reproduce(Coordinate coordinate)
         {
-            Ocean.Cells[coordinate.X, coordinate.Y] = new Prey(coordinate, this.Image);
+            Ocean._cells[coordinate.X, coordinate.Y] = new Prey(coordinate, this.Image);
         }
         public void MoveFrom(Coordinate from, Coordinate to)
         {
@@ -57,9 +57,9 @@ namespace OceanHunt
             }
             else
             {
-                Ocean.Cells[from.X, from.Y] = new Cell(from, Emoji.ImageForCell);
+                Ocean._cells[from.X, from.Y] = new Cell(from, Emoji.ImageForCell);
             }
-            Ocean.Cells[to.X, to.Y] = this;
+            Ocean._cells[to.X, to.Y] = this;
         }
     }
 }

@@ -10,16 +10,16 @@ namespace OceanHunt
 
         static Random random = new Random();
 
-        public static int numRows = 25;            // число рядків
-        public static int numCols = 70;            // число стовпців
-        public static int size = numCols * numRows;
-        public static int numPrey = 150;          // жертви
-        public static int numPredators = 20;      // хижаки
-        public static int numObstacles = 75;      // перешкоди
-        public static int interationCounter = 1000; // ітерації 
+        public static int _numRows = 25;            // число рядків
+        public static int _numCols = 70;            // число стовпців
+        public static int _size = _numCols * _numRows;
+        public static int _numPrey = 150;          // жертви
+        public static int _numPredators = 20;      // хижаки
+        public static int _numObstacles = 75;      // перешкоди
+        public static int _interationCounter = 1000; // ітерації 
 
 
-        public static Cell[,] Cells = new Cell[numRows, numCols];
+        public static Cell[,] _cells = new Cell[_numRows, _numCols];
 
         #region fastback
         //static int numRows = 25;            // число рядків
@@ -69,7 +69,7 @@ namespace OceanHunt
         public static int Run(int iterationCounter)
         {
             Console.WriteLine($"Enter the number of interations DEFAULT = {iterationCounter}");
-            return interationCounter;
+            return _interationCounter;
         }
 
         //public static void DisplayBorder(int[,] cells)                      // горизонтальні лінії зверху та знизу 
@@ -113,18 +113,18 @@ namespace OceanHunt
 
                 }
             }
-            Cells = newCells;
+            _cells = newCells;
         }
 
         //Console.Write("{0, 5}", cells[i, j]);
         public static void DisplayCells()                         // принт масиву
         {
             Console.WriteLine();
-            for (int i = 0; i < Cells.GetLength(0); i++)
+            for (int i = 0; i < _cells.GetLength(0); i++)
             {
-                for (int j = 0; j < Cells.GetLength(1); j++)
+                for (int j = 0; j < _cells.GetLength(1); j++)
                 {
-                    Console.Write(Cells[i, j].Image);
+                    Console.Write(_cells[i, j].Image);
                 }
                 Console.WriteLine();
                 
@@ -135,28 +135,22 @@ namespace OceanHunt
         {
 
         }
-
-
-
-        //public static void DisplayBorders()
-        //{
-
-        //    for (int i = 0; i < Cells.GetLength(0); i++)
-        //    {
-        //        for (int j = 0; j < Cells.GetLength(1); j++)
-        //        {
-        //            Cells[i, 0] = new Cell(new Coordinate {X = i, Y = 0 } ,Emoji.ImageForBorder);
-        //            Cells[i, Cells.GetLength(0) -1] = new Cell(new Coordinate { X = i, Y = Cells.GetLength(0) - 1 }, Emoji.ImageForBorder);
-
-        //            Cells[0, j] = new Cell(new Coordinate { X = 0, Y = j }, Emoji.ImageForBorder+ "*");
-        //            Cells[Cells.GetLength(1) - 1, j] = new Cell(new Coordinate { X = Cells.GetLength(1) - 1, Y = j }, Emoji.ImageForBorder+ "*");
-        //        }
-        //    }
-        //}
-
-        public static void DisplayBorders()         // тимчасові кордони
+        
+        public static void AddEmptyCell()
         {
-            for (int i = 0; i < numCols; i++)
+            for (int i = 0; i < _numRows; i++)
+            {
+                for (int j = 0; j < _numCols; j++)
+                {
+                    _cells[i, j] = null;
+                }
+            }
+        }
+
+
+        public static void DisplayBorders()         // кордони
+        {
+            for (int i = 0; i < _numCols; i++)
             {
                 Console.Write("*");
             }
