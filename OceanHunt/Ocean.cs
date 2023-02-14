@@ -119,6 +119,7 @@ namespace OceanHunt
         //Console.Write("{0, 5}", cells[i, j]);
         public static void DisplayCells()                         // принт масиву
         {
+            Console.WriteLine();
             for (int i = 0; i < Cells.GetLength(0); i++)
             {
                 for (int j = 0; j < Cells.GetLength(1); j++)
@@ -126,6 +127,7 @@ namespace OceanHunt
                     Console.Write(Cells[i, j].Image);
                 }
                 Console.WriteLine();
+                
             }
         }
 
@@ -134,21 +136,28 @@ namespace OceanHunt
 
         }
 
+        //public static void DisplayBorders()
+        //{
+
+        //    for (int i = 0; i < Cells.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < Cells.GetLength(1); j++)
+        //        {
+        //            Cells[i, 0] = new Cell(new Coordinate {X = i, Y = 0 } ,Emoji.ImageForBorder);
+        //            Cells[i, Cells.GetLength(0) -1] = new Cell(new Coordinate { X = i, Y = Cells.GetLength(0) - 1 }, Emoji.ImageForBorder);
+
+        //            Cells[0, j] = new Cell(new Coordinate { X = 0, Y = j }, Emoji.ImageForBorder+ "*");
+        //            Cells[Cells.GetLength(1) - 1, j] = new Cell(new Coordinate { X = Cells.GetLength(1) - 1, Y = j }, Emoji.ImageForBorder+ "*");
+        //        }
+        //    }
+        //}
+
         public static void DisplayBorders()
         {
-
-            for (int i = 0; i < Cells.GetLength(0); i++)
+            for (int i = 0; i < numCols; i++)
             {
-                for (int j = 0; j < Cells.GetLength(1); j++)
-                {
-                    Cells[i, 0] = new Cell(new Coordinate {X = i, Y = 0 } ,Emoji.ImageForBorder);
-                    Cells[i, Cells.GetLength(0) -1] = new Cell(new Coordinate { X = i, Y = Cells.GetLength(0) - 1 }, Emoji.ImageForBorder);
-
-                    Cells[0, j] = new Cell(new Coordinate { X = 0, Y = j }, Emoji.ImageForBorder+ "♦");
-                    Cells[Cells.GetLength(1) - 1, j] = new Cell(new Coordinate { X = Cells.GetLength(1) - 1, Y = j }, Emoji.ImageForBorder+ "♦");
-                }
+                Console.Write("*");
             }
         }
-
     }
 }

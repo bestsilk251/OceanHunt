@@ -30,6 +30,7 @@ namespace OceanHunt
             Console.WriteLine($"Number of preys: {Ocean.numPrey}");
             Console.WriteLine($"Number of predators: {Ocean.numPredators}");
             Console.WriteLine($"Number of obstacles: {Ocean.numObstacles}");
+            Console.WriteLine("OCEAN HUNT");
 
             Ocean.InitCells(Ocean.numRows, Ocean.numCols);
 
@@ -37,6 +38,7 @@ namespace OceanHunt
             //DisplayBorder(cells);
             Ocean.DisplayBorders();
             Ocean.DisplayCells();
+            Ocean.DisplayBorders();
             //DisplayBorder(numRows);
         }
 
