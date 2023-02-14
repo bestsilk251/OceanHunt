@@ -136,6 +136,8 @@ namespace OceanHunt
 
         }
 
+
+
         //public static void DisplayBorders()
         //{
 
@@ -152,7 +154,7 @@ namespace OceanHunt
         //    }
         //}
 
-        public static void DisplayBorders()
+        public static void DisplayBorders()         // тимчасові кордони
         {
             for (int i = 0; i < numCols; i++)
             {
