@@ -39,14 +39,14 @@ namespace OceanHunt
         {
             //AddEmptyCell();
             Cell[,] newCells = new Cell[numRows, numCols];
-            for (int i = 0; i < numRows; i++)
-            {
-                for (int j = 0; j < numCols; j++)
-                {
-                    newCells[i, j] = new Cell(new Coordinate {X = i, Y = j }, Emoji.ImageForCell) ;
+            //for (int i = 0; i < numRows; i++)
+            //{
+            //    for (int j = 0; j < numCols; j++)
+            //    {
+            //        newCells[i, j] = new Cell(new Coordinate {X = i, Y = j }, Emoji.ImageForCell) ;
 
-                }
-            }
+            //    }
+            //}
             _cells = newCells;
         }
 
