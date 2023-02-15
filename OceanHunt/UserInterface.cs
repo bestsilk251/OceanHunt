@@ -11,6 +11,9 @@ namespace OceanHunt
     {
         public static void GettingValues()
         {
+            //Ocean._iterationCounter = int.Parse(Console.ReadLine());                          // помилку видає
+
+            Console.WriteLine($"Enter the number of interations DEFAULT = {Ocean._iterationCounter}");
             Ocean._iterationCounter = int.Parse(Console.ReadLine());
             Console.WriteLine($"Enter number of rows DEFAULT = {Ocean._numRows}");
             Ocean._numRows = int.Parse(Console.ReadLine());
@@ -33,6 +36,7 @@ namespace OceanHunt
             Console.WriteLine("OCEAN HUNT");
 
             Ocean.Run(Ocean._iterationCounter);
+            
         }
 
     }
