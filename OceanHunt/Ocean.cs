@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
 namespace OceanHunt
 {
@@ -32,9 +33,26 @@ namespace OceanHunt
             AddPreys();
             AddPredators();
 
-            DisplayBorders();
-            DisplayCells();
-            DisplayBorders();
+            for (int k = 0; k < iterationCounter; k++)  
+            {
+                for (int i = 0; i < _cells.GetLength(0); i++)
+                {
+                    for (int j = 0; j < _cells.GetLength(1); j++)
+                    {
+                        _cells[i, j].Process();
+                    }
+                }
+
+                DisplayBorders();
+                DisplayCells();
+                DisplayBorders();
+
+                Thread.Sleep(50);
+
+                Console.Clear();
+            }
+
+            
 
         }
         private static void InitCells(int numRows, int numCols)                // заповнення масиву
