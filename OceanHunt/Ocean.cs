@@ -29,6 +29,8 @@ namespace OceanHunt
             InitCells(_numRows, _numCols);
 
             AddObstacles();
+            AddPreys();
+            AddPredators();
 
             DisplayBorders();
             DisplayCells();
@@ -38,15 +40,16 @@ namespace OceanHunt
         private static void InitCells(int numRows, int numCols)                // заповнення масиву
         {
             //AddEmptyCell();
+            
             Cell[,] newCells = new Cell[numRows, numCols];
-            //for (int i = 0; i < numRows; i++)
-            //{
-            //    for (int j = 0; j < numCols; j++)
-            //    {
-            //        newCells[i, j] = new Cell(new Coordinate {X = i, Y = j }, Emoji.ImageForCell) ;
+            for (int i = 0; i < numRows; i++)
+            {
+                for (int j = 0; j < numCols; j++)
+                {
+                    newCells[i, j] = new Cell(new Coordinate {X = i, Y = j }, Emoji.ImageForCell) ;
 
-            //    }
-            //}
+                }
+            }
             _cells = newCells;
         }
 
@@ -66,22 +69,36 @@ namespace OceanHunt
 
         private static void AddPredators()              // хижак
         {
+            Coordinate empty;
+            for (int i = 0; i < _numPredators; i++)
+            {
 
+                empty = GetEmptyCellCoord();
+                _cells[empty.X, empty.Y] = new Prey(empty, Emoji.ImageForPredator);
+
+            }
         }
         private static void AddPreys()                  // жертва
         {
+            Coordinate empty;
+            for (int i = 0; i < _numPrey; i++)
+            {
 
+                empty = GetEmptyCellCoord();
+                _cells[empty.X, empty.Y] = new Prey(empty, Emoji.ImageForPrey);
+
+            }
         }
+
         private static void AddObstacles()            // перешкоди
         {
             Coordinate empty;
-            for (int i = 0; i < _numRows; i++)
+            for (int i = 0; i < _numObstacles; i++)
             {
-                for (int j = 0; j < _numCols; j++)
-                {
-                    empty = GetEmptyCellCoord();
-                    _cells[empty.X, empty.Y] = new Obstacle(empty, Emoji.ImageForObstacle);
-                }
+                
+                empty = GetEmptyCellCoord();
+                _cells[empty.X, empty.Y] = new Obstacle(empty, Emoji.ImageForObstacle);
+                
             }
         }
 
