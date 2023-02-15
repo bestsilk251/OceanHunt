@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace OceanHunt
@@ -8,7 +9,7 @@ namespace OceanHunt
     public class Ocean
     {
 
-        static Random random = new Random();
+        public Random random = new Random();
 
         public static int _numRows = 25;            // число рядків
         public static int _numCols = 70;            // число стовпців
@@ -16,7 +17,7 @@ namespace OceanHunt
         public static int _numPrey = 150;          // жертви
         public static int _numPredators = 20;      // хижаки
         public static int _numObstacles = 75;      // перешкоди
-        public static int _interationCounter = 1000; // ітерації 
+        public static int _iterationCounter = 1000; // ітерації 
 
 
         public static Cell[,] _cells = new Cell[_numRows, _numCols];
@@ -66,44 +67,20 @@ namespace OceanHunt
 
 
 
-        public static int Run(int iterationCounter)
+        public void Run(int iterationCounter)
         {
+
             Console.WriteLine($"Enter the number of interations DEFAULT = {iterationCounter}");
-            return _interationCounter;
+            AddObstacles();
+            InitCells(_numRows, _numCols);
+            DisplayBorders();
+            DisplayCells();
+            DisplayBorders();
+
         }
-
-        //public static void DisplayBorder(int[,] cells)                      // горизонтальні лінії зверху та знизу 
-        //{
-
-
-        //    for (int i = 0; i < cells.GetLength(0); i++)
-        //    {
-        //        for (int j = 0; j < cells.GetLength(1); j++)
-        //        {
-        //            if (i == 0 || i == cells.GetLength(0) - 1 || j == 0 || j == cells.GetLength(1) - 1)
-        //            {
-        //                Console.Write("#");
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine(cells[i, j]);
-        //            }
-
-        //        }
-        //        Console.WriteLine();
-        //    }
-
-        //    //for (int i = 0; i < numRows; i++)
-        //    //{
-        //    //    Console.Write("#");
-        //    //    //continue;
-        //    //}
-
-        //}
-
-        //public static void InitCells()
-        public static void InitCells(int numRows, int numCols)                // заповнення масиву
+        private void InitCells(int numRows, int numCols)                // заповнення масиву
         {
+            AddEmptyCell();
             Cell[,] newCells = new Cell[numRows, numCols];
             for (int i = 0; i < numRows; i++)
             {
@@ -116,8 +93,7 @@ namespace OceanHunt
             _cells = newCells;
         }
 
-        //Console.Write("{0, 5}", cells[i, j]);
-        public static void DisplayCells()                         // принт масиву
+        private void DisplayCells()                         // принт масиву
         {
             Console.WriteLine();
             for (int i = 0; i < _cells.GetLength(0); i++)
@@ -131,12 +107,27 @@ namespace OceanHunt
             }
         }
 
-        public static void AddPredators()
+        private void AddPredators()              // хижак
         {
 
         }
-        
-        public static void AddEmptyCell()
+        private void AddPreys()                  // жертва
+        {
+
+        }
+        private void AddObstacles()            // перешкоди
+        {
+            Coordinate empty;
+            for (int i = 0; i < _numRows; i++)
+            {
+                for (int j = 0; j < _numCols; j++)
+                {
+                    empty = GetEmptyCellCoord();
+                    _cells[empty.X, empty.Y] = new Obstacle(empty, Emoji.ImageForObstacle);
+                }
+            }
+        }
+        private void AddEmptyCell()           // клітки
         {
             for (int i = 0; i < _numRows; i++)
             {
@@ -147,8 +138,23 @@ namespace OceanHunt
             }
         }
 
+        Coordinate GetEmptyCellCoord()
+        {
+            int x;
+            int y;
+            Coordinate empty;
 
-        public static void DisplayBorders()         // кордони
+            x = random.Next(0, _numCols - 1);
+            y = random.Next(0, _numRows - 1);
+
+            empty = _cells[x, y].OffSet;
+
+
+            return empty;
+        }
+
+
+        private void DisplayBorders()         // кордони
         {
             for (int i = 0; i < _numCols; i++)
             {

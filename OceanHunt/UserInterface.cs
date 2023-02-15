@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace OceanHunt
     {
         public static void GettingValues()
         {
-            Ocean._interationCounter = int.Parse(Console.ReadLine());
+            Ocean._iterationCounter = int.Parse(Console.ReadLine());
             Console.WriteLine($"Enter number of rows DEFAULT = {Ocean._numRows}");
             Ocean._numRows = int.Parse(Console.ReadLine());
             Console.WriteLine($"Enter number of columns DEFAULT = {Ocean._numCols}");
@@ -22,7 +23,7 @@ namespace OceanHunt
             Console.WriteLine($"Enter number of obstacles DEFAULT = {Ocean._numObstacles}");
             Ocean._numObstacles = int.Parse(Console.ReadLine());
             Console.WriteLine("");
-            Console.WriteLine($"Number of interations: {Ocean._interationCounter}");
+            Console.WriteLine($"Number of interations: {Ocean._iterationCounter}");
             Console.WriteLine($"Your size is: {Ocean._numRows * Ocean._numCols}");
             Console.WriteLine($"Number of rows: {Ocean._numRows}");
             Console.WriteLine($"Number of columns: {Ocean._numCols}");
@@ -31,14 +32,7 @@ namespace OceanHunt
             Console.WriteLine($"Number of obstacles: {Ocean._numObstacles}");
             Console.WriteLine("OCEAN HUNT");
 
-            Ocean.InitCells(Ocean._numRows, Ocean._numCols);
-
-            //DisplayBorder(numRows);
-            //DisplayBorder(cells);
-            Ocean.DisplayBorders();                 // перенести в Run
-            Ocean.DisplayCells();
-            Ocean.DisplayBorders();
-            //DisplayBorder(numRows);
+            Ocean.Run(Ocean._iterationCounter);
         }
 
     }
