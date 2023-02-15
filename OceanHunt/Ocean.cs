@@ -11,13 +11,13 @@ namespace OceanHunt
 
         public Random random = new Random();
 
-        public static int _numRows = 25;            // число рядків
-        public static int _numCols = 70;            // число стовпців
-        public static int _size = _numCols * _numRows;
-        public static int _numPrey = 150;          // жертви
-        public static int _numPredators = 20;      // хижаки
-        public static int _numObstacles = 75;      // перешкоди
-        public static int _iterationCounter = 1000; // ітерації 
+        public static int numRows = 25;            // число рядків
+        public static int numCols = 70;            // число стовпців
+        public static int size = numCols * numRows;
+        public static int numPrey = 150;          // жертви
+        public static int numPredators = 20;      // хижаки
+        public static int numObstacles = 75;      // перешкоди
+        public static int interationCounter = 1000; // ітерації 
 
 
         public static Cell[,] _cells = new Cell[_numRows, _numCols];
