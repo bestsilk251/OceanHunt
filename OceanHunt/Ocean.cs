@@ -33,8 +33,18 @@ namespace OceanHunt
             AddPreys();
             AddPredators();
 
+            
             for (int k = 0; k < iterationCounter; k++)  
             {
+                if (_numPrey == 0 || _numPredators == 0)
+                {
+                    Console.WriteLine("Program STOP!");
+
+                    DisplayCells();
+
+                    break;
+                }
+
                 for (int i = 0; i < _cells.GetLength(0); i++)
                 {
                     for (int j = 0; j < _cells.GetLength(1); j++)
@@ -43,9 +53,7 @@ namespace OceanHunt
                     }
                 }
 
-                DisplayBorders();
                 DisplayCells();
-                DisplayBorders();
 
                 Thread.Sleep(50);
 
@@ -73,6 +81,7 @@ namespace OceanHunt
 
         private static void DisplayCells()                         // принт масиву
         {
+            DisplayBorders();
             Console.WriteLine();
             for (int i = 0; i < _cells.GetLength(0); i++)
             {
@@ -83,6 +92,7 @@ namespace OceanHunt
                 Console.WriteLine();
                 
             }
+            DisplayBorders();
         }
 
         private static void AddPredators()              // хижак
