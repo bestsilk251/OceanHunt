@@ -47,10 +47,10 @@ namespace OceanHunt
             int y = OffSet.Y;
             if (TryMove())
             {
-                if (TimeToReproduce == 0)
-                {
-                    Reproduce(new Coordinate() { X = x, Y = y });
-                }
+                //if (TimeToReproduce == 0)
+                //{
+                //    Reproduce(new Coordinate() { X = x, Y = y });
+                //}
             }
         }
 
