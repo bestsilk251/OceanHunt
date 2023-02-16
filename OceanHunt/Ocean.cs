@@ -36,6 +36,7 @@ namespace OceanHunt
 
             for (int k = 0; k < iterationCounter; k++)
             {
+                Prey.MoveCounter = 0;
                 if (_numPrey == 0 || _numPredators == 0)
                 {
                     Console.WriteLine("Program STOP!");
@@ -54,6 +55,7 @@ namespace OceanHunt
                 }
 
                 DisplayCells();
+                DisplayStatistic();
                 Console.ReadKey();
                 if (k != iterationCounter - 1)
                 {
@@ -72,6 +74,23 @@ namespace OceanHunt
 
 
         }
+
+        private static void DisplayStatistic()
+        {
+            Console.WriteLine();
+            Console.WriteLine($@"
+
+-------------------------------------------------------------------------
+|    PREYS        |    PREDATORS    |    OBSTACLES    |COUNT OF MOVEMENT|
+-------------------------------------------------------------------------
+|                 |                 |                 |                 |
+|      {_numPrey}              {_numPrey}                     {_numObstacles}               {Prey.MoveCounter}                       
+|                 |                 |                 |                 |
+-------------------------------------------------------------------------
+
+");
+        }
+
         private static void InitCells(int numRows, int numCols)                // заповнення масиву
         {
             //AddEmptyCell();
