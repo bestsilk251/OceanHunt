@@ -15,14 +15,22 @@ namespace OceanHunt
         }
         public override void Process()
         {
-            if (TimeToFeed==0)
+            if (TimeToFeed == 0)
             {
                 Die();
                 return;
             }
+
             base.Process();
+
             TimeToFeed--;
         }
+
+        public override bool TryMove()
+        {
+            return base.TryMove();
+        }
+
         public void Eat()
         {
             TimeToFeed = _defaultTimeToFeed;

@@ -12,10 +12,7 @@ namespace OceanHunt
         static void Main(string[] args)
         {
             UserInterface.GettingValues();
-
-
             Console.ReadKey();
-
         }
 
     }

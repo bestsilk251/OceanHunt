@@ -23,7 +23,7 @@ namespace OceanHunt
 
         public static Cell[,] _cells = new Cell[_numRows, _numCols];
 
-        
+
 
         public static void Run(int iterationCounter)
         {
@@ -32,9 +32,9 @@ namespace OceanHunt
             AddObstacles();
             AddPreys();
             AddPredators();
+            DisplayCells();
 
-            
-            for (int k = 0; k < iterationCounter; k++)  
+            for (int k = 0; k < iterationCounter; k++)
             {
                 if (_numPrey == 0 || _numPredators == 0)
                 {
@@ -54,25 +54,34 @@ namespace OceanHunt
                 }
 
                 DisplayCells();
+                Console.ReadKey();
+                if (k != iterationCounter - 1)
+                {
+                    //Thread.Sleep(500);
 
-                Thread.Sleep(50);
+                    Console.Clear();
+                }
+                else
+                {
+                    // Show stats in the end
+                    Console.WriteLine("Statistic: \n\n");
+                }
 
-                Console.Clear();
             }
 
-            
+
 
         }
         private static void InitCells(int numRows, int numCols)                // заповнення масиву
         {
             //AddEmptyCell();
-            
+
             Cell[,] newCells = new Cell[numRows, numCols];
             for (int i = 0; i < numRows; i++)
             {
                 for (int j = 0; j < numCols; j++)
                 {
-                    newCells[i, j] = new Cell(new Coordinate {X = i, Y = j }, Emoji.ImageForCell) ;
+                    newCells[i, j] = new Cell(new Coordinate { X = i, Y = j }, Emoji.ImageForCell);
 
                 }
             }
@@ -90,7 +99,7 @@ namespace OceanHunt
                     Console.Write(_cells[i, j].Image);
                 }
                 Console.WriteLine();
-                
+
             }
             DisplayBorders();
         }
@@ -102,7 +111,7 @@ namespace OceanHunt
             {
 
                 empty = GetEmptyCellCoord();
-                _cells[empty.X, empty.Y] = new Prey(empty, Emoji.ImageForPredator);
+                _cells[empty.X, empty.Y] = new Predator(empty, Emoji.ImageForPredator);
 
             }
         }
@@ -123,10 +132,10 @@ namespace OceanHunt
             Coordinate empty;
             for (int i = 0; i < _numObstacles; i++)
             {
-                
+
                 empty = GetEmptyCellCoord();
                 _cells[empty.X, empty.Y] = new Obstacle(empty, Emoji.ImageForObstacle);
-                
+
             }
         }
 
