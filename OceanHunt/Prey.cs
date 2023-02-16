@@ -9,6 +9,8 @@ namespace OceanHunt
 {
     public class Prey : Cell
     {
+        private static int _moveCounter = 0;
+        public static int MoveCounter { get { return _moveCounter; } set { _moveCounter = value; } }
         public int TimeToReproduce { get; set; }
 
         public delegate bool Predicate();
@@ -113,6 +115,7 @@ namespace OceanHunt
         {
             return IsMove(GetCellFromEast());
         }
+        
         public bool West()
         {
             return IsMove(GetCellFromWest());
@@ -122,6 +125,7 @@ namespace OceanHunt
         {
             return IsMove(GetCellFromNorth());
         }
+        
         public bool South()
         {
             return IsMove(GetCellFromSouth());
@@ -174,6 +178,7 @@ namespace OceanHunt
             Ocean._cells[x, y] = new Cell(OffSet, Emoji.ImageForCell);
             this.OffSet = to;
             AssignCellAt(this, to);
+            _moveCounter++;
         }
     }
 }
